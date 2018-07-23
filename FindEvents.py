@@ -25,7 +25,7 @@ class Search(ndb.model):
     def get(self):
         search_input = ndb.StringProperty(required=True)
 
-
+#####i was trying to figure out search, but before i do that i want to insert the login button and create event button for links later.  
 
 
 
