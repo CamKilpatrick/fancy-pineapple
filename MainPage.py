@@ -6,6 +6,9 @@ import os
 from google.appengine.ext import ndb
 import Event
 from FindEvents import FindEventsHandler
+
+from SearchResults import SearchResultsHandler
+
 from SearchResults import SearchResultsHandler
 
 from google.appengine.ext import ndb
@@ -13,6 +16,7 @@ import Event
 
 from FindEvents import FindEventsHandler
 from login import LoginHandler
+
 
 
 
