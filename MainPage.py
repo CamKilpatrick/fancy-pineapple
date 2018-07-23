@@ -9,7 +9,7 @@ jinja_env = jinja2.Environment(
 )
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
-        main_template= jinja_env.get_template('template/MP.html')
+        main_template= jinja_env.get_template('MP.html')
         html= main_template.render()
         self.response.write(html)
 
