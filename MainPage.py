@@ -15,5 +15,5 @@ class MainPageHandler(webapp2.RequestHandler):
 
 
 app= webapp2.WSGIApplication([
-    ('/', MainPageHandler)
+    ('/MP', MainPageHandler)
 ]debug=True)

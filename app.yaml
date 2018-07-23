@@ -35,6 +35,11 @@ handlers:
 - url: /ED
   script: EventDescription.app
 
+- url: /MP
+  script: MainPage.py
+
+
+
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*
   script: main.app
