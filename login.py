@@ -86,4 +86,4 @@ app = webapp2.WSGIApplication([
 
 
 
-# make this work and connect to the main page/ home page also, fix mainpage.py
+# make this work and connect to the main page/ home page also, fix mainpage.py. also change location on create event to actual location using google map
