@@ -30,17 +30,13 @@ handlers:
   static_dir: my-images
 
 - url: /create
-  script: CreateEvent.app
+  script: MainPage.app
 
 - url: /ED
   script: EventDescription.app
 
 - url: /MP
   script: MainPage.app
-
-
-
-
 
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*

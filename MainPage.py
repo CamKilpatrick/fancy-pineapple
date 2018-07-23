@@ -7,6 +7,8 @@ from google.appengine.ext import ndb
 import Event
 from FindEvents import FindEventsHandler
 from SearchResults import SearchResultsHandler
+from CreateEvent import CreateEventHandler
+#from login import LoginHandler
 
 
 
@@ -23,6 +25,6 @@ app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
     ('/results', SearchResultsHandler),
-    ('/create', CreateEventHandler)
-    ('/login', LoginHandler)
+    ('/create', CreateEventHandler),
+    #('/login', LoginHandler)
 ],debug=True)

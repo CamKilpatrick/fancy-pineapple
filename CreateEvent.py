@@ -11,18 +11,20 @@ jinja_env = jinja2.Environment(
 
 class CreateEventHandler(webapp2.RequestHandler):
     def get(self):
+        createvent_template= jinja_env.get_template('CE.html')
+        html= createvent_template.render()
+        self.response.write(html)
 
+class SendEvent(webapp2.RequestHandler):
+    def get(self):
         new_event = Event.Event()
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
         new_event.tags = self.request.get('tags')
-        new_event.start= self.request.get('start')
-        new_event.end= self.request.get('end')
-        new_event.location= self.request.get('location')
+        new_event.start = self.request.get('start')
+        new_event.end = self.request.get('end')
+        new_event.location = self.request.get('location')
         new_event.put()
-        createvent_template= jinja_env.get_template('CE.html')
-        html= createvent_template.render()
-        self.response.write(html)
 
 app = webapp2.WSGIApplication([
     ('/create', CreateEventHandler)
