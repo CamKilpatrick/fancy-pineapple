@@ -4,6 +4,7 @@ import datetime
 import jinja2
 import os
 from FindEvents import FindEventsHandler
+from SearchResults import SearchResultsHandler
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
