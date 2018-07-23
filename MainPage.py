@@ -5,16 +5,18 @@ import jinja2
 import os
 from google.appengine.ext import ndb
 import Event
-
 from FindEvents import FindEventsHandler
 
 from SearchResults import SearchResultsHandler
 
+from SearchResults import SearchResultsHandler
 
 from google.appengine.ext import ndb
 import Event
 
 from FindEvents import FindEventsHandler
+from login import LoginHandler
+
 
 
 
@@ -27,12 +29,10 @@ class MainPageHandler(webapp2.RequestHandler):
         html = main_template.render()
         self.response.write(html)
 
-
-
-
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
     ('/results', SearchResultsHandler),
+    ('/create', CreateEventHandler)
     ('/login', LoginHandler)
 ],debug=True)
