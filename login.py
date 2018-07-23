@@ -27,7 +27,7 @@ import webapp2
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-class CssiUser(ndb.Model):
+class User(ndb.Model):
 
   first_name = ndb.StringProperty()
   last_name = ndb.StringProperty()
@@ -38,15 +38,15 @@ class LoginHandler(webapp2.RequestHandler):
     # If the user is logged in...
     if user:
       email_address = user.nickname()
-      cssi_user = CssiUser.get_by_id(user.user_id())
+      user = User.get_by_id(user.user_id())
       signout_link_html = '<a href="%s">sign out</a>' % (
           users.create_logout_url('/'))
       # If the user has previously been to our site, we greet them!
-      if cssi_user:
+      if user:
         self.response.write('''
             Welcome %s %s (%s)! <br> %s <br>''' % (
-              cssi_user.first_name,
-              cssi_user.last_name,
+              user.first_name,
+              user.last_name,
               email_address,
               signout_link_html))
       # If the user hasn't been to our site, we ask them to sign up
@@ -72,14 +72,18 @@ class LoginHandler(webapp2.RequestHandler):
       # You shouldn't be able to get here without being logged in
       self.error(500)
       return
-    cssi_user = CssiUser(
+    user = User(
         first_name=self.request.get('first_name'),
         last_name=self.request.get('last_name'),
         id=user.user_id())
-    cssi_user.put()
+    user.put()
     self.response.write('Thanks for signing up, %s!' %
-        cssi_user.first_name)
+        user.first_name)
 
 app = webapp2.WSGIApplication([
   ('/login', LoginHandler)
 ], debug=True)
+
+
+
+# make this work and connect to the main page/ home page also, fix mainpage.py
