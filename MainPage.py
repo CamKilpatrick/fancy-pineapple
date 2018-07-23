@@ -6,6 +6,10 @@ import os
 from FindEvents import FindEventsHandler
 from CreateEvent import CreateEventHandler
 from SearchResults import SearchResultsHandler
+from google.appengine.ext import ndb
+import Event
+
+from FindEvents import FindEventsHandler
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -21,4 +25,5 @@ app = webapp2.WSGIApplication([
     ('/find', FindEventsHandler),
     ('/results', SearchResultsHandler),
     ('/create', CreateEventHandler)
+    ('/login', LoginHandler)
 ],debug=True)
