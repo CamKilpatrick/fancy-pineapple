@@ -4,7 +4,7 @@ import datetime
 import jinja2
 import os
 
-import model
+
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -19,4 +19,5 @@ class LoginHandler(webapp2.RequestHandler):
 
 
 app= webapp2.WSGIApplication([
-    ('/login', LoginHandler),
+    ('/login', LoginHandler)
+    ],debug=True)
