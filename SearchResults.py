@@ -12,7 +12,7 @@ jinja_env = jinja2.Environment(
 
 class SearchResultsHandler(webapp2.RequestHandler):
     def get(self):
-        searchvar = self.request.get("search_input")
-        self.response.write("Your search term was" ())
+        searchvar = self.request.get("self.search_input")
+        self.response.write("Your search term was %s" % (self.search_input))
         findevents_template = jinja_env.get_template('SR.html')
         html = findevents_template.render()
