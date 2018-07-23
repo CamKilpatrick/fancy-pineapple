@@ -3,13 +3,9 @@ import random
 import datetime
 import jinja2
 import os
-<<<<<<< HEAD
-from google.appengine.ext import ndb
-import Event
-
-=======
 from FindEvents import FindEventsHandler
->>>>>>> f351f8e7fed9e348ab4a6977fc308fce67495329
+from CreateEvent import CreateEventHandler
+from SearchResults import SearchResultsHandler
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -20,11 +16,9 @@ class MainPageHandler(webapp2.RequestHandler):
         html = main_template.render()
         self.response.write(html)
 
-
-
-
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
-    ('/results', SearchResultsHandler)
+    ('/results', SearchResultsHandler),
+    ('/create', CreateEventHandler)
 ],debug=True)
