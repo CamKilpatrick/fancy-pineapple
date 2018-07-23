@@ -3,14 +3,20 @@ import random
 import datetime
 import jinja2
 import os
+from google.appengine.ext import ndb
+import Event
+
 from FindEvents import FindEventsHandler
 <<<<<<< HEAD
 from SearchResults import SearchResultsHandler
 =======
+
 from google.appengine.ext import ndb
 import Event
 
->>>>>>> a6a2d9b4b92d837d99c2670288c4dc8cf06fb156
+from FindEvents import FindEventsHandler
+
+>>>>>>> 8c5769761a4c99e6edfa84a3e994de1b2720e582
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -27,5 +33,6 @@ class MainPageHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
-    ('/results', SearchResultsHandler)
+    ('/results', SearchResultsHandler),
+    ('/login', LoginHandler)
 ],debug=True)
