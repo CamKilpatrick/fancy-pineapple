@@ -37,6 +37,11 @@ class FindEventsHandler(webapp2.RequestHandler):
 ####to be a new page
 
 class SearchResultsHandler
+    def get(self):
+
+
+    findevents_template = jinja_env.get_template('SR.html')
+    html = findevents_template.render()
 
 
 

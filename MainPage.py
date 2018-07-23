@@ -20,4 +20,5 @@ class MainPageHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
+    ('/results', SearchResultsHandler)
 ],debug=True)
