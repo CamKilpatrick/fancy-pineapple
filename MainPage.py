@@ -3,6 +3,9 @@ import random
 import datetime
 import jinja2
 import os
+from google.appengine.ext import ndb
+import Event
+
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
