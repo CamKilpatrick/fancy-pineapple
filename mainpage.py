@@ -63,7 +63,6 @@ class EventTemplateHandler(webapp2.RequestHandler):
 class NewEventHandler(webapp2.RequestHandler):
     def get(self):
         new_event = Event()
-        print self.request.get('start')
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
         new_event.tags = self.request.get('tags')
@@ -71,6 +70,9 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.end = DateTimeConverter(self.request.get('end'))
         new_event.location = self.request.get('location')
         new_event.put()
+        print "#######################################"
+        print self.request.get('musictag')
+        print "#######################################"
 
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
