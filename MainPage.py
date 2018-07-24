@@ -20,6 +20,7 @@ from FindEvents import FindEventsHandler
 from login import LoginHandler
 from CreateEvent import NewEventHandler
 from FindEvents import ActiveSearchHandler
+from myevent import MyEventHandler
 
 
 
@@ -43,9 +44,9 @@ app = webapp2.WSGIApplication([
     ('/active', ActiveSearchHandler),
     # ('/login', LoginHandler)
     ('/login', LoginHandler),
-    ('/create', EventTemplateHandler)
-
+    ('/create', EventTemplateHandler),
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
-    ('/active', ActiveSearchHandler)
+    ('/active', ActiveSearchHandler),
+    ('/myevent', MyEventHandler),
 ],debug=True)
