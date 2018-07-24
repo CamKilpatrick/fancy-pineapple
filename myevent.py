@@ -19,4 +19,3 @@ class FindMyEventHandler(webapp2.RequestHandler):
 
 class MyEventHandler(webapp2.RequestHandler):
     def get(self):
-        
