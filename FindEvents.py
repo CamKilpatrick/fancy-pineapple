@@ -18,7 +18,6 @@ class FindEventsHandler(webapp2.RequestHandler):
         html = findevents_template.render()
         self.response.write(html)
 
-
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         searchvar = self.request.get("search_input")
