@@ -69,12 +69,11 @@ class EventTemplateHandler(webapp2.RequestHandler):
 class NewEventHandler(webapp2.RequestHandler):
     def get(self):
         new_event = Event()
-<<<<<<< HEAD
-=======
+
         myevent_template= jinja_env.get_template('myevent.html')
         html= myevent_template.render()
         self.response.write(html)
->>>>>>> 911a1d6d39369e99a67b29f78c94a7761c27b86a
+
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
         new_event.tags = self.request.get('tags')
