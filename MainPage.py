@@ -40,8 +40,7 @@ app = webapp2.WSGIApplication([
     ('/new', NewEventHandler),
     #('/login', LoginHandler)
     ('/create', EventTemplateHandler),
-    ('/active', ActiveSearchHandler)
+    ('/active', ActiveSearchHandler),
     # ('/login', LoginHandler)
-    ('/login', LoginHandler),
-    ('/create', EventTemplateHandler)
+    ('/login', LoginHandler)
 ],debug=True)
