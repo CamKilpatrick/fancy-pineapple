@@ -5,7 +5,7 @@ import jinja2
 import os
 from google.appengine.ext import ndb
 from login import LoginHandler
-from DateTimeConverter import DateTimeConverter
+
 
 
 jinja_env = jinja2.Environment(
