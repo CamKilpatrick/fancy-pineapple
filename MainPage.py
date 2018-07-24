@@ -4,15 +4,26 @@ import datetime
 import jinja2
 import os
 from google.appengine.ext import ndb
-import Event
 from login import LoginHandler
-from SearchByName import SearchByName
 from DateTimeConverter import DateTimeConverter
 
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
 )
+
+def SearchByName(name):
+    newsearch = Event.query().filter(Event.eventname==name)
+    return newsearch
+
+class Event(ndb.Model):
+    eventname = ndb.StringProperty(required=True)
+    description = ndb.StringProperty(required=True)
+    tags = ndb.StringProperty(required=True)
+    end = ndb.DateTimeProperty(required=True)
+    start =ndb.DateTimeProperty(required=True)
+    location = ndb.StringProperty(required=True)
+
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
         main_template = jinja_env.get_template('MP.html')
