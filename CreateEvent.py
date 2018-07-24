@@ -4,7 +4,7 @@ import random
 import datetime
 import jinja2
 import os
-
+from DateTimeConverter import DateTimeConverter
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -23,8 +23,8 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
         new_event.tags = self.request.get('tags')
-        #new_event.start = DateTimeConverter.DateTimeConverter(self.request.get('start'))
-        new_event.end = datetime.datetime.strptime(self.request.get('end'))
+        new_event.start = DateTimeConverter(self.request.get('start'))
+        new_event.end = DateTimeConverter(self.request.get('end'))
         new_event.location = self.request.get('location')
         new_event.put()
 

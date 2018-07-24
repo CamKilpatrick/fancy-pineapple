@@ -53,7 +53,7 @@ class LoginHandler(webapp2.RequestHandler):
       else:
         self.response.write('''
             Welcome to our site, %s!  Please sign up! <br>
-            <form method="post" action="/">
+            <form method="post" action="/login">
             <input type="text" name="first_name" placeholder= 'Enter First Name'>
             <input type="text" name="last_name" placeholder= 'Enter Last Name'>
             <input type="submit">
@@ -77,8 +77,9 @@ class LoginHandler(webapp2.RequestHandler):
         last_name=self.request.get('last_name'),
         id=user.user_id())
     user.put()
-    self.response.write('Thanks for signing up, %s!' %
-        user.first_name)
+    self.response.write('"Thanks for signing up, %s!' %
+        user.first_name )
+
 
 app = webapp2.WSGIApplication([
   ('/login', LoginHandler)
