@@ -28,17 +28,17 @@ handlers:
   static_dir: my-images
 
 - url: /create
-  script: MainPage.app
+  script: mainpage.app
 
 - url: /ED
-  script: EventDescription.app
+  script: eventdescription.app
 
 - url: /MP
-  script: MainPage.app
+  script: mainpage.app
 
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*
-  script: MainPage.app
+  script: mainpage.app
 
 
 libraries:
