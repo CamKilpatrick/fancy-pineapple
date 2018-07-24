@@ -5,7 +5,6 @@ from google.appengine.ext import ndb
 import random
 import webapp2
 import Event
-from SearchResults import SearchResultsHandler
 
 # import model
 
