@@ -24,7 +24,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         searchvar = self.request.get("search_input")
         query = Event.Event.query().filter(Event.Event.eventname=="searchvar")
         query = query.get()
-        print query
+        self.response.write(query)
 
         # search = model.Search()
         # search.search_input = raw_input
