@@ -44,12 +44,17 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search2 = search.get()
-        self.response.write(search2.start)
-        self.response.write(search2.eventname)
-        self.response.write(search2.description)
-        self.response.write(search2.tags)
-        self.response.write(search2.end)
-        self.response.write(search2.location)
+        print "################"
+        print search2
+        if search2 is not None:
+            self.response.write(search2.start)
+            self.response.write(search2.eventname)
+            self.response.write(search2.description)
+            self.response.write(search2.tags)
+            self.response.write(search2.end)
+            self.response.write(search2.location)
+        else:
+            self.response.write("Sorry, your seach turned up empty.")
 
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
