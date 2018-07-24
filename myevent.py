@@ -15,3 +15,7 @@ class FindMyEventHandler(webapp2.RequestHandler):
         html= myevent_template.render()
         self.response.write(html)
         results = self.request.get("search_input")
+
+
+class MyEventHandler(webapp2.RequestHandler):
+    def get(self):
