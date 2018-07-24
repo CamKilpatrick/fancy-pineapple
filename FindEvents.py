@@ -15,10 +15,13 @@ jinja_env = jinja2.Environment(
 
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
-        searchvar = self.request.get("search_input")
         findevents_template = jinja_env.get_template('FE.html')
         html = findevents_template.render()
-        self.response.write("We recieved your search")
+        
+
+# searchvar = self.request.get("search_input")
+
+        # self.response.write("We recieved your search")
 
 
         # search = model.Search()
