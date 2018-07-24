@@ -16,6 +16,10 @@ def SearchByName(name):
     newsearch = Event.query().filter(Event.eventname==name)
     return newsearch
 
+def DateTimeConverter(timestring):
+    s = datetime.datetime.strptime(timestring, "%Y-%m-%dT%H:%M")
+    return s
+
 class Event(ndb.Model):
     eventname = ndb.StringProperty(required=True)
     description = ndb.StringProperty(required=True)
