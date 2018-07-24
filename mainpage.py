@@ -33,7 +33,7 @@ class Event(ndb.Model):
 
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
-        main_template = jinja_env.get_template('MP.html')
+        main_template = jinja_env.get_template('mp.html')
         html = main_template.render()
         self.response.write(html)
 
@@ -41,7 +41,7 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
-        findevents_template = jinja_env.get_template('FE.html')
+        findevents_template = jinja_env.get_template('fe.html')
         html = findevents_template.render()
         self.response.write(html)
 
@@ -63,10 +63,9 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write("Sorry, your seach turned up empty.")
 
 
-
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
-        createvent_template= jinja_env.get_template('CE.html')
+        createvent_template= jinja_env.get_template('ce.html')
         html= createvent_template.render()
         self.response.write(html)
 
