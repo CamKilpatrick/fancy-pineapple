@@ -23,7 +23,9 @@ def DateTimeConverter(timestring):
 class Event(ndb.Model):
     eventname = ndb.StringProperty(required=True)
     description = ndb.StringProperty(required=True)
-    tags = ndb.StringProperty(required=True)
+    musictag = ndb.StringProperty(required=True)
+    dancetag = ndb.StringProperty(required=True)
+    theatertag = ndb.StringProperty(required=True)
     end = ndb.DateTimeProperty(required=True)
     start =ndb.DateTimeProperty(required=True)
     location = ndb.StringProperty(required=True)
