@@ -34,6 +34,8 @@ class MainPageHandler(webapp2.RequestHandler):
         html = main_template.render()
         self.response.write(html)
 
+
+
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
         findevents_template = jinja_env.get_template('FE.html')
@@ -53,6 +55,8 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write(search2.location)
         else:
             self.response.write("Sorry, your seach turned up empty.")
+
+
 
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
