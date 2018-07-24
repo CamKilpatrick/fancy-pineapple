@@ -13,7 +13,7 @@ jinja_env = jinja2.Environment(
 )
 
 def SearchByName(name):
-    newsearch = Event.query().filter(Event.eventname==name)
+    newsearch = Event.query().filter(Event.eventnamelower==name.lower())
     return newsearch
 
 def DateTimeConverter(timestring):
@@ -22,6 +22,7 @@ def DateTimeConverter(timestring):
 
 class Event(ndb.Model):
     eventname = ndb.StringProperty(required=True)
+    eventnamelower = ndb.StringProperty(required=True)
     description = ndb.StringProperty(required=True)
     musictag = ndb.StringProperty(required=True)
     dancetag = ndb.StringProperty(required=True)
@@ -52,7 +53,6 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write(search2.start)
             self.response.write(search2.eventname)
             self.response.write(search2.description)
-            self.response.write(search2.tags)
             self.response.write(search2.end)
             self.response.write(search2.location)
             self.response.write(search2.theatertag)
@@ -77,6 +77,7 @@ class NewEventHandler(webapp2.RequestHandler):
         myevent_template= jinja_env.get_template('myevent.html')
         html= myevent_template.render()
         self.response.write(html)
+        new_event.eventnamelower = self.request.get('eventname').lower()
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
         new_event.musictag = self.request.get('musictag')
