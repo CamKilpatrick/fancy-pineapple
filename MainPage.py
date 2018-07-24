@@ -6,23 +6,12 @@ import os
 from google.appengine.ext import ndb
 import Event
 from FindEvents import FindEventsHandler
-
-from SearchResults import SearchResultsHandler
-
 from SearchResults import SearchResultsHandler
 from CreateEvent import EventTemplateHandler
-#from login import LoginHandler
-
-from google.appengine.ext import ndb
-import Event
-
-from FindEvents import FindEventsHandler
 from login import LoginHandler
 from CreateEvent import NewEventHandler
 from FindEvents import ActiveSearchHandler
 from myevent import MyEventHandler
-
-
 
 
 jinja_env = jinja2.Environment(
@@ -39,10 +28,8 @@ app = webapp2.WSGIApplication([
     ('/find', FindEventsHandler),
     ('/results', SearchResultsHandler),
     ('/new', NewEventHandler),
-    #('/login', LoginHandler)
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
-    # ('/login', LoginHandler)
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/login', LoginHandler),

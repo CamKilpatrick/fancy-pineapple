@@ -5,7 +5,6 @@ from google.appengine.ext import ndb
 import random
 import webapp2
 import Event
-
 # import model
 
 jinja_env = jinja2.Environment(
@@ -17,14 +16,19 @@ class FindEventsHandler(webapp2.RequestHandler):
         findevents_template = jinja_env.get_template('FE.html')
         html = findevents_template.render()
         self.response.write(html)
-
+        results = self.request.get("search_input")
 
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
-        searchvar = self.request.get("search_input")
-        query = Event.Event.query().filter(Event.Event.eventname=="searchvar")
-        query = query.get()
-        print query
+        # searchvar = self.request.get("search_input")
+        search = Event.Event.query().filter(Event.Event.eventname==self.request.get("search_input"))
+        search2 = search.get()
+        self.response.write(search2.start)
+        self.response.write(search2.eventname)
+        self.response.write(search2.description)
+        self.response.write(search2.tags)
+        self.response.write(search2.end)
+        self.response.write(search2.location)
 
         # search = model.Search()
         # search.search_input = raw_input
