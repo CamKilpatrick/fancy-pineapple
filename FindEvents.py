@@ -21,9 +21,14 @@ class FindEventsHandler(webapp2.RequestHandler):
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         # searchvar = self.request.get("search_input")
-        query = Event.Event.query().filter(Event.Event.eventname==results)
-        query = query.get()
-        self.response.write(query)
+        search = Event.Event.query().filter(Event.Event.eventname==self.request.get("search_input"))
+        search2 = search.get()
+        self.response.write(search2.start)
+        self.response.write(search2.eventname)
+        self.response.write(search2.description)
+        self.response.write(search2.tags)
+        self.response.write(search2.end)
+        self.response.write(search2.location)
 
         # search = model.Search()
         # search.search_input = raw_input
