@@ -7,6 +7,7 @@ from google.appengine.ext import ndb
 from login import LoginHandler
 
 
+
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
 )
@@ -43,8 +44,6 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search2 = search.get()
-        print "################"
-        print search2
         if search2 is not None:
             self.response.write(search2.start)
             self.response.write(search2.eventname)
