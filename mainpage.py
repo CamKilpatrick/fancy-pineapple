@@ -55,6 +55,10 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write(search2.tags)
             self.response.write(search2.end)
             self.response.write(search2.location)
+            self.response.write(search2.theatertag)
+            self.response.write(search2.dancetag)
+            self.response.write(search2.musictag)
+
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
@@ -75,7 +79,9 @@ class NewEventHandler(webapp2.RequestHandler):
         self.response.write(html)
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
-        new_event.tags = self.request.get('tags')
+        new_event.musictag = self.request.get('musictag')
+        new_event.theatertag = self.request.get('theatertag')
+        new_event.dancetag = self.request.get('dancetag')
         new_event.start = DateTimeConverter(self.request.get('start'))
         new_event.end = DateTimeConverter(self.request.get('end'))
         new_event.location = self.request.get('location')
