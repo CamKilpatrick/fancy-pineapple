@@ -4,8 +4,8 @@ from google.appengine.ext import ndb
 import random
 import webapp2
 import Event
-from FindEvents import FindEventsHandler
-from FindEvents import ActiveSearchHandler
+from MainPage import FindEventsHandler
+from MainPage import ActiveSearchHandler
 
 jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
