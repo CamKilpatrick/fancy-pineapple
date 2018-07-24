@@ -1,10 +1,10 @@
-# import webapp2
-# import random
-# import datetime
-# import jinja2
-# import os
-#
-#
+import webapp2
+import random
+import datetime
+import jinja2
+import os
+
+
 #
 # jinja_env = jinja2.Environment(
 #     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -54,8 +54,8 @@ class LoginHandler(webapp2.RequestHandler):
         self.response.write('''
             Welcome to our site, %s!  Please sign up! <br>
             <form method="post" action="/">
-            <input type="text" name="first_name">
-            <input type="text" name="last_name">
+            <input type="text" name="first_name" placeholder= 'Enter First Name'>
+            <input type="text" name="last_name" placeholder= 'Enter Last Name'>
             <input type="submit">
             </form><br> %s <br>
             ''' % (email_address, signout_link_html))
