@@ -63,7 +63,7 @@ class EventTemplateHandler(webapp2.RequestHandler):
 
 class NewEventHandler(webapp2.RequestHandler):
     def get(self):
-        new_event = Event.Event()
+        new_event = Event
         print self.request.get('start')
         new_event.eventname = self.request.get('eventname')
         new_event.description = self.request.get('description')
