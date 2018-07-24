@@ -3,7 +3,7 @@
   <h1> Create New Event </h1>
 </head>
   <body>
-    <form>
+    <form method="get" action="/new">
     <p> Event Name:<input type='text' name='eventname'></p>
     <p> Location: <input type='text' name= 'location'></p>
     <p> Start: <input type= 'datetime-local' name='start'></p>
@@ -20,6 +20,7 @@
       <option value= 'music'>
       <option value= 'theater'>
     </datalist> -->
+
       <input type= 'submit' value="Create Event">
     </form>
   </body>

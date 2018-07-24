@@ -9,13 +9,13 @@ jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
 )
 
-class CreateEventHandler(webapp2.RequestHandler):
+class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
         createvent_template= jinja_env.get_template('CE.html')
         html= createvent_template.render()
         self.response.write(html)
 
-class SendEvent(webapp2.RequestHandler):
+class NewEventHandler(webapp2.RequestHandler):
     def get(self):
         new_event = Event.Event()
         new_event.eventname = self.request.get('eventname')
@@ -27,5 +27,6 @@ class SendEvent(webapp2.RequestHandler):
         new_event.put()
 
 app = webapp2.WSGIApplication([
-    ('/create', CreateEventHandler)
+    ('/create', EventTemplateHandler),
+    ('/new', NewEventHandler)
 ], debug=True)
