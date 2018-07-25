@@ -28,7 +28,7 @@ def SearchByTag(tagname):
         pass
 
 def MakeLink(event):
-    event.link = ""
+    event.link = "/" + str(event.key.id)
 
 def DateTimeConverter(timestring):
     s = datetime.datetime.strptime(timestring, "%Y-%m-%dT%H:%M")
@@ -62,7 +62,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
-        #map(    , search_iter)
+        #map(MakeLink, search_iter)
         ####### make a unique link for each item in the list so we can get to "see more"
         if search_iter is not None:
            event_template = jinja_env.get_template('sr.html')
