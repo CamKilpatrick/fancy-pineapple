@@ -75,12 +75,12 @@ class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
         search4 = search3.get()
-        # self.response.write(search4)
+        self.response.write(search4)
         theater_template = jinja_env.get_template('/tagsearch.html')
         html = theater_template.render({
-            'events': search4,
-            'event_title': search3.eventname
-            'event_description': specific_event1.description,
+            # 'events': search3,
+            'event_title': search4.eventname,
+            'event_description': search4.description,
             ##'tags': specific_event1.musictag
         })
 
@@ -133,7 +133,7 @@ class EventHandler(webapp2.RequestHandler):
         html = event_template.render({
         'event_title': specific_event1.eventname,
         'event_description': specific_event1.description,
-        'tags': specific_event1.musictag
+        'tags': specific_event1.musictag,
         })
         self.response.write(html)
 
