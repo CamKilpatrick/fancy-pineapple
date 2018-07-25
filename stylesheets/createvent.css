@@ -1,0 +1,22 @@
+.entry{
+  color:#C9CFFF;
+  font-family: fantasy;
+  background-color:#FFF9C9;
+  font-size: 25px;
+}
+
+#header{
+  color:#FFA18F;
+  font-family: fantasy;
+  background-color:#FFF9C9;
+  font-size: 35px;
+}
+body{
+  background-color: #FFF9C9;
+}
+
+#button{
+  color: #663366;
+  font-family: fantasy;
+  font-size: 25px;
+}

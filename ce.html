@@ -1,26 +1,26 @@
 <head>
+  <meta charset="UTF-8">
   <title> Create New Event Page</title>
-  <h1> Create New Event </h1>
+  <link rel="stylesheet" href="/stylesheets/createvent.css">
 </head>
   <body>
-    <form method="get" action="/new">
-    <p> Event Name:<input type='text' name='eventname'></p>
-    <p> Location: <input type='text' name= 'location'></p>
-    <p> Start: <input type= 'datetime-local' name='start'></p>
-    <p> End: <input type= 'datetime-local' name='end'></p>
-    <p> Description: <input type= 'text' name='description'></p>
-    <p>Tags: <input type="checkbox" name="theatertag">Theater
-      <input type="checkbox" name="musictag">Music
-      <input type="checkbox" name="dancetag">Dance
-      </p>
-
-    <!-- <p> Tags: <input type= 'checkbox' name='tags'></p> -->
-    <!-- <p> Tags: <input list='tags' name ='tags' mulitple></p> -->
-    <!-- <datalist multiple id ='tags'>
-      <option value= 'music'>
-      <option value= 'theater'>
-    </datalist> -->
-
-      <input type= 'submit' value="Create Event">
-    </form>
+    <div id= "header">
+      <h1> Create New Event </h1>
+    </div>
+    <div class='entry'>
+      <form method="get" action="/new">
+      <p> Event Name:<input type='text' name='eventname'></p>
+      <p> Location: <input type='text' name= 'location'></p>
+      <p> Start: <input type= 'datetime-local' name='start'></p>
+      <p> End: <input type= 'datetime-local' name='end'></p>
+      <p> Description: <input type= 'text' name='description'></p>
+      <p>Tags: <input type="checkbox" name="theatertag">Theater
+        <input type="checkbox" name="musictag">Music
+        <input type="checkbox" name="dancetag">Dance
+        </p>
+      <div id="button">
+        <input type= 'submit' value="Create Event">
+      </div>
+      </form>
+    </div>
   </body>
