@@ -1,13 +1,20 @@
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Search Results</title>
+    <link rel="stylesheet" href="/stylesheets/searchresults.css">
   </head>
     <body>
+      <div id="back">
+        <a href="/"> Back to Main</a>
+      </div>
       <ul id="navigation">
       {% for item in navigation %}
       <li>
-        <p>Event Title:
+        <div id="header">
+          <p>Event Title:
           {{ item.eventname }}
+        </div>
         </p>
         <p>Description:
           {{ item.description }}
@@ -24,17 +31,22 @@
         <p>
           Tags: {{ x }}
           {% if item.musictag=="on" %}
-            Music
+            <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
           {% endif %}
           {% if (item.theatertag=="on") %}
-            Theater
+            <div class= "buttons"><form action="/theater"><button type="submit">Theater</button></form></div>
           {% endif %}
           {% if (item.dancetag=="on") %}
-            Dance
+            <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
           {% endif %}
         </p>
+<<<<<<< HEAD
         <a href="/ed?key={{item.key.id()}}">See More</a>
         <hr>
+=======
+        <a id="seemore" href="/event?id="+item.link>See More</a>
+        <hr id="line">
+>>>>>>> 4e9cdb941c60c74b4c4482d608322cd09a34271e
       </li>
       {% endfor %}
       </ul>
