@@ -5,9 +5,15 @@
 <body>
 
 
-  {% for Event in events %}
-  <p>Title: {{ specific_event1.eventname }}</p>
-    <p>Description: {{ specific_event1.description }}</p>
+  {% for event in events %}
+  <p>Title: {{ event.description }}</p>
+    <p>Description: {{ something.something }}</p>
+
+
+
+
+
+
       <!-- <p>Employed:
               {{ person.job }}
         {% if person.job == True %}
@@ -16,8 +22,8 @@
           no
         {% endif %}
       </p> -->
-    <hr></hr>
-  {% endfor %}
+    <!-- <hr></hr>
+  {% endfor %} -->
 </body>
 
 
