@@ -32,3 +32,9 @@ body{
   background-color: #FFF9C9;
   text-align: center;
 }
+
+input[type=text]{
+  width: 20%;
+  border: 2px solid #FFA18F;
+
+}
