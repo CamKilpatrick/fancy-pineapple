@@ -65,7 +65,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
         if search_iter is not None:
-           event_template = jinja_env.get_template('sr.html')
+           event_template = jinja_env.get_template('/sr.html')
            html = event_template.render({
            'navigation': search_iter
            })
@@ -78,11 +78,12 @@ class ActiveSearchHandler(webapp2.RequestHandler):
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
-        theater_template = jinja_env.get_template('/sr.html')
-        html = theater_template.render({
-            'navigation': search3.iter(),
-        })
-        if search3 is not None:
+        tagsearch = search3.iter()
+        if tagsearch is not None:
+            theater_template = jinja_env.get_template('sr.html')
+            html = theater_template.render({
+            'navigation': tagsearch,
+            })
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
@@ -91,14 +92,16 @@ class TheaterSearchHandler(webapp2.RequestHandler):
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("musictag")
-        theater_template = jinja_env.get_template('/sr.html')
-        html = theater_template.render({
-            'navigation': search3.iter(),
-        })
-        if search3 is not None:
+        tagsearch = search3.iter()
+        if tagsearch is not None:
+            music_template = jinja_env.get_template('sr.html')
+            html = music_template.render({
+            'navigation': tagsearch,
+            })
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
+
 
 
 class DanceSearchHandler(webapp2.RequestHandler):
