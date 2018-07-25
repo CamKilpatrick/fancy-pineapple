@@ -74,7 +74,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write(search2.musictag)
 
         else:
-            self.response.write("Sorry, your seach turned up empty.")
+            self.response.write("Sorry, your search turned up empty.")
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
