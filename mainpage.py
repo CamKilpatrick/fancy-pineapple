@@ -64,6 +64,9 @@ class FindEventsHandler(webapp2.RequestHandler):
         findevents_template = jinja_env.get_template('fe.html')
         html = findevents_template.render()
         self.response.write(html)
+        # displayquery = Event.query().order(Event.start)
+        # return displayquery
+        #I was trying to make a query that will show all the events on one page on the find events page
 
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
@@ -78,7 +81,8 @@ class ActiveSearchHandler(webapp2.RequestHandler):
            })
             self.response.write(html)
         else:
-            self.response.write("Sorry, your seach turned up empty.")
+           self.response.write("Sorry, your seach turned up empty.")
+#this activesearch hanlder is not workign for some reason
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
@@ -92,6 +96,8 @@ class TheaterSearchHandler(webapp2.RequestHandler):
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
+
+            ######need to finishe th eerror message for returning an empty search for theater, music, and dance
 
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
