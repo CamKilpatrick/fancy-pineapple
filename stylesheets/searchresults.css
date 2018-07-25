@@ -1,0 +1,28 @@
+body{
+  color:#96a2ff;
+  background-color: #FFF9C9;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+#line{
+  color:#FFA18F;
+}
+
+#seemore{
+  color:#663366;
+}
+
+#header{
+  font-size: 30px;
+}
+
+.buttons{
+  display:inline-block;
+  color: #FFA18F;
+}
+
+#back{
+  text-align: right;
+  color: #663366;
+}
