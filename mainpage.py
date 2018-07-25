@@ -64,21 +64,13 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         search = SearchByName(self.request.get("search_input"))
         search2 = search.get()
         if search2 is not None:
-            self.response.write(search2.start)
-            self.response.write(search2.eventname)
-            self.response.write(search2.description)
-            self.response.write(search2.end)
-            self.response.write(search2.location)
-            self.response.write(search2.theatertag)
-            self.response.write(search2.dancetag)
-            self.response.write(search2.musictag)
-
+            self.resonse.write(search2)
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-        search3 = SearchByTag("musictag")
-        search4 = search3.get()
-        self.response.write(search4)
+        #search3 = SearchByTag("musictag")
+        #search4 = search3.get()
+        #self.response.write(search4)
 
 
 
@@ -106,6 +98,18 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.location = self.request.get('location')
         new_event.put()
 
+class EventHandler(webapp2.RequestHandler):
+    def get(self):
+        specific_event = Event.query().filter(Event.eventnamelower=="test event 3")
+        specific_event1 = specific_event.get()
+        event_template = jinja_env.get_template('ED.html')
+        html = event_template.render({
+        'event_title': specific_event1.eventname,
+        'event_description': specific_event1.description,
+        'tags': specific_event1.musictag
+        })
+        self.response.write(html)
+
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
@@ -117,4 +121,5 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
+    ('/ED', EventHandler),
 ],debug=True)

@@ -9,7 +9,7 @@ jinja_env = jinja2.Environment(
 
 class EventHandler(webapp2.RequestHandler):
     def get(self):
-        specific_event = Event.query().fetch()
+        specific_event = Event.query().filter(Event.name=="test event 3")
         event_template = jinja_env.get_template('ED.html')
         html = event_template.render({
         'event_title': specific_event.title,
