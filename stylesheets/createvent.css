@@ -21,7 +21,9 @@ body{
   font-size: 80px;
 }
 
-input[type=text]{
-
+.description{
+  width: 300px;
+  height: 60px;
 }
-/* increase size of descroption box */
+
+/* <textarea name="text" rows="14" cols="10" wrap="soft"> </textarea> */
