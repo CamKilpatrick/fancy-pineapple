@@ -1,0 +1,34 @@
+#header{
+  color:#C9CFFF;
+  font-family:fantasy;
+  font-size: 40px;
+}
+
+#searchbar{
+  color:#FFA18F;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+#searchbutton{
+  color:#663366;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+#event{
+  color: #FFA18F;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+.buttons{
+  color: #663366;
+  font-family: fantasy;
+  font-size: 30px;
+}
+
+body{
+  background-color: #FFF9C9;
+  text-align: center;
+}
