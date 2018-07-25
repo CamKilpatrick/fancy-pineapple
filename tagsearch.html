@@ -4,10 +4,30 @@
 </head>
 <body>
 
+  <ul id="navigation">
+  {% for item in navigation %}
+  <li>
+    <p>Title:
+      {{ item.eventname }}
+    </p>
+    <p>
+      {{ item.description }}
+    </p>
+    <p>
+      {{ item.description }}
+    </p>
+  </li>
+    {% endfor %}
+  </ul>
+  <!-- {% for event in events %}
+  <p>Title: {{ event.description }}</p>
+    <p>Description: {{ something.something }}</p> -->
 
-  {% for Event in events %}
-  <p>Title: {{ specific_event1.eventname }}</p>
-    <p>Description: {{ specific_event1.description }}</p>
+
+
+
+
+
       <!-- <p>Employed:
               {{ person.job }}
         {% if person.job == True %}
@@ -16,8 +36,8 @@
           no
         {% endif %}
       </p> -->
-    <hr></hr>
-  {% endfor %}
+    <!-- <hr></hr>
+  {% endfor %} -->
 </body>
 
 
