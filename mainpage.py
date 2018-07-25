@@ -64,6 +64,8 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
+        #map(    , search_iter)
+        ####### make a unique link for each item in the list so we can get to "see more"
         if search_iter is not None:
            event_template = jinja_env.get_template('sr.html')
            html = event_template.render({
