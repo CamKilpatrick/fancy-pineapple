@@ -69,18 +69,19 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write(search2.key)
         else:
             self.response.write("Sorry, your seach turned up empty.")
-        
+
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
         search4 = search3.get()
-        self.response.write(search4)
-        'events':
+        # self.response.write(search4)
         theater_template = jinja_env.get_template('/tagsearch.html')
-
         html = theater_template.render({
-            'people': all_people,
+            'events': search4,
+            'event_title': search3.eventname
+            'event_description': specific_event1.description,
+            ##'tags': specific_event1.musictag
         })
 
 
