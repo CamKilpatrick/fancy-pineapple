@@ -27,6 +27,9 @@ def SearchByTag(tagname):
     else:
         pass
 
+def MakeLink(event):
+    event.link = ""
+
 def DateTimeConverter(timestring):
     s = datetime.datetime.strptime(timestring, "%Y-%m-%dT%H:%M")
     return s
@@ -41,6 +44,7 @@ class Event(ndb.Model):
     end = ndb.DateTimeProperty(required=True)
     start =ndb.DateTimeProperty(required=True)
     location = ndb.StringProperty(required=True)
+    link = ndb.StringProperty(required=False)
 
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
@@ -69,13 +73,6 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-<<<<<<< HEAD
-=======
-####the ActiveSearchHandler stopped working for some reason...
-
-##down here, i was trying to create an error message of "your search has not returned any results"
-
->>>>>>> e3910b26258acbff29a0d505d9921bcdffbb1dd6
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
@@ -102,11 +99,6 @@ class MusicSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> e3910b26258acbff29a0d505d9921bcdffbb1dd6
 class DanceSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("dancetag")
