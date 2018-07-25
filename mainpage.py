@@ -74,6 +74,10 @@ class ActiveSearchHandler(webapp2.RequestHandler):
 
 
 
+
+
+
+
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
         createvent_template= jinja_env.get_template('ce.html')
