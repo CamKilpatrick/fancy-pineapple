@@ -64,18 +64,15 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         search = SearchByName(self.request.get("search_input"))
         search2 = search.get()
         if search2 is not None:
-            self.resonse.write(search2)
+            self.response.write(search2)
+            self.response.write("#################")
+            self.response.write(search2.key)
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
         #search3 = SearchByTag("musictag")
         #search4 = search3.get()
         #self.response.write(search4)
-
-
-
-
-
 
 
 class EventTemplateHandler(webapp2.RequestHandler):
@@ -103,8 +100,8 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.put()
 
 class EventHandler(webapp2.RequestHandler):
-    def get(self):
-        specific_event = Event.query().filter(Event.eventnamelower=="test event 3")
+    def get(self, name):
+        specific_event = Event.query().filter(Event.eventnamelower==name)
         specific_event1 = specific_event.get()
         event_template = jinja_env.get_template('ED.html')
         html = event_template.render({
