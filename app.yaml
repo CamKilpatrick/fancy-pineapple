@@ -17,12 +17,12 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
-
-- url: /app-stylesheets
-  static_dir: app-stylesheets
 
 - url: /my-images
   static_dir: my-images
