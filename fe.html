@@ -25,5 +25,42 @@
       <div id= "searchbar">Search for Events: <input type="text" name="search_input" placeholder= "Searching..."></div>
       <div id="searchbutton"> <input type="submit" value="Search Events"></div>
     </form>
+  <br>
+<!-- I was trying to make a query that will show all the events on one page on the find events page-->
+  <!-- <ul id="navigation">
+  {% for item in navigation %}
+  <li>
+    <p>Event Title:
+      {{ item.eventname }}
+    </p>
+    <p>Description:
+      {{ item.description }}
+    </p>
+    <p>Start Date and Time:
+      {{ item.start }}
+    </p>
+    <p>End Date and Time:
+      {{ item.end }}
+    </p>
+    <p>Location:
+      {{ item.location }}
+    </p>
+    <p>
+      Tags: {{ x }}
+      {% if item.musictag=="on" %}
+        Music
+      {% endif %}
+      {% if (item.theatertag=="on") %}
+        Theater
+      {% endif %}
+      {% if (item.dancetag=="on") %}
+        Dance
+      {% endif %}
+    </p>
+    <a href="/event?id="+item.link>See More</a>
+    <hr>
+  </li>
+  {% endfor %}
+  </ul> -->
   </body>
 </html>
