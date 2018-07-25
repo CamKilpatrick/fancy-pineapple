@@ -71,6 +71,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
            self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
+<<<<<<< HEAD
 
 
 #class TheaterSearchHandler(webapp2.RequestHandler):
@@ -84,6 +85,22 @@ class ActiveSearchHandler(webapp2.RequestHandler):
 #        html = theater_template.render({
 #            'people': all_people,
 #        })
+=======
+
+
+class TheaterSearchHandler(webapp2.RequestHandler):
+    def get(self):
+        search3 = SearchByTag("theatertag")
+        search4 = search3.get()
+        self.response.write(search4)
+        theater_template = jinja_env.get_template('/tagsearch.html')
+        html = theater_template.render({
+            # 'events': search3,
+            'event_title': search4.eventname,
+            'event_description': search4.description,
+            ##'tags': specific_event1.musictag
+        })
+>>>>>>> de3faf7211e572a92f1486bb6a8b9d978579b082
 
 
 class MusicSearchHandler(webapp2.RequestHandler):
@@ -134,7 +151,7 @@ class EventHandler(webapp2.RequestHandler):
         html = event_template.render({
         'event_title': specific_event1.eventname,
         'event_description': specific_event1.description,
-        'tags': specific_event1.musictag
+        'tags': specific_event1.musictag,
         })
         self.response.write(html)
 
