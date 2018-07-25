@@ -74,58 +74,36 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write("Sorry, your seach turned up empty.")
 
 
-#class TheaterSearchHandler(webapp2.RequestHandler):
-#    def get(self):
-#        search3 = SearchByTag("theatertag")
-#        search4 = search3.get()
-#        self.response.write(search4)
-#        'events':
-#        theater_template = jinja_env.get_template('/tagsearch.html')
-#
-#        html = theater_template.render({
-#            'people': all_people,
-#        })
-
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
-
         theater_template = jinja_env.get_template('/sr.html')
-        ########### getting rid of tagsearch.
         html = theater_template.render({
             'navigation': search3.iter(),
-            # 'blank': blank.blank,
-
-                        # 'events': search3,
-            # 'event_title': search3.eventname,
-            # 'event_description': search3.description,
-                        ##'tags': specific_event1.musictag
         })
-        if search3_iter is not None:
+        if search3 is not None:
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
-
-# search4 = search3.iter()
-# self.response.write(search4)
 
 
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("musictag")
-        # search4 = search3.get()
-        # self.response.write(search4)
+        theater_template = jinja_env.get_template('/sr.html')
+        html = theater_template.render({
+            'navigation': search3.iter(),
+        })
+        if search3 is not None:
+            self.response.write(html)
+        else:
+            self.response.write("Sorry, your seach turned up empty.")
+
 
 class DanceSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("dancetag")
-        # search4 = search3.get()
-        # self.response.write(search4)
-
-        #search3 = SearchByTag("musictag")
-        #search4 = search3.get()
-        #self.response.write(search4)
 
 
 class EventTemplateHandler(webapp2.RequestHandler):
