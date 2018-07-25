@@ -6,8 +6,6 @@ import os
 from google.appengine.ext import ndb
 from login import LoginHandler
 
-
-
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
 )
@@ -15,7 +13,6 @@ jinja_env = jinja2.Environment(
 def SearchByName(name):
     newsearch = Event.query().filter(Event.eventnamelower==name.lower())
     return newsearch
-
 
 def SearchByTag(tagname):
     if tagname=="theatertag":
@@ -30,6 +27,8 @@ def SearchByTag(tagname):
     else:
         pass
 
+def MakeLink(event):
+    event.link = "/" + str(event.key.id)
 
 def DateTimeConverter(timestring):
     s = datetime.datetime.strptime(timestring, "%Y-%m-%dT%H:%M")
@@ -45,14 +44,13 @@ class Event(ndb.Model):
     end = ndb.DateTimeProperty(required=True)
     start =ndb.DateTimeProperty(required=True)
     location = ndb.StringProperty(required=True)
+    link = ndb.StringProperty(required=False)
 
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
         main_template = jinja_env.get_template('mp.html')
         html = main_template.render()
         self.response.write(html)
-
-
 
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
@@ -64,6 +62,8 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
+        #map(MakeLink, search_iter)
+        ####### make a unique link for each item in the list so we can get to "see more"
         if search_iter is not None:
            event_template = jinja_env.get_template('sr.html')
            html = event_template.render({
@@ -73,38 +73,35 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-
-
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
-        theater_template = jinja_env.get_template('/sr.html')
-        html = theater_template.render({
-            'navigation': search3.iter(),
-        })
-        if search3 is not None:
+        tagsearch = search3.iter()
+        if tagsearch is not None:
+            theater_template = jinja_env.get_template('sr.html')
+            html = theater_template.render({
+            'navigation': tagsearch,
+            })
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
-
 
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("musictag")
-        theater_template = jinja_env.get_template('/sr.html')
-        html = theater_template.render({
-            'navigation': search3.iter(),
-        })
-        if search3 is not None:
+        tagsearch = search3.iter()
+        if tagsearch is not None:
+            music_template = jinja_env.get_template('sr.html')
+            html = music_template.render({
+            'navigation': tagsearch,
+            })
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-
 class DanceSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("dancetag")
-
 
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
