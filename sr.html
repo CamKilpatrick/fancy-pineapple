@@ -13,8 +13,29 @@
           {{ item.description }}
         </p>
         <hr>
+        <p>
+          {{ item.start }}
+        </p>
+        <p>
+          {{ item.end }}
+        </p>
+        <p>
+          {{ item.location }}
+        </p>
+        <p>
+          Tags: {{ x }}
+          {% if item.musictag=="on" %}
+            Music
+          {% endif %}
+          {% if (item.theatertag=="on") %}
+            Theater
+          {% endif %}
+          {% if (item.dancetag=="on") %}
+            Dance
+          {% endif %}
+        </p>
       </li>
-        {% endfor %}
+      {% endfor %}
       </ul>
     </body>
 </html>

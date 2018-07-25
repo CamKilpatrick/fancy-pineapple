@@ -63,7 +63,7 @@ class FindEventsHandler(webapp2.RequestHandler):
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
-        search2 = search.iter()
+        search_iter = search.iter()
         if search_iter is not None:
            event_template = jinja_env.get_template('sr.html')
            html = event_template.render({
