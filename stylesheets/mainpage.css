@@ -1,0 +1,27 @@
+#header{
+  color: #C9CFFF;
+  background-color: #FFF9C9;
+  font-family: fantasy;
+  text-align: center;
+  font-size: 28px;
+}
+
+#description{
+  color: #FFA18F;
+  font-family: fantasy;
+  text-align: center;
+  font-size: 20px;
+}
+
+.buttons{
+  color: inherit;
+  font-family: fantasy;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+body{
+  background-color: #FFF9C9;
+  text-align: center;
+}
