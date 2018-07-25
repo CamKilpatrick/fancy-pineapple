@@ -63,6 +63,10 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             self.response.write("Sorry, your seach turned up empty.")
 
 
+
+
+
+
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
         createvent_template= jinja_env.get_template('ce.html')
