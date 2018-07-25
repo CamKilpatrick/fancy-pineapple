@@ -90,11 +90,11 @@ class ActiveSearchHandler(webapp2.RequestHandler):
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
-        search4 = search3.get()
+        # search4 = search3.iter()
         # self.response.write(search4)
         theater_template = jinja_env.get_template('/tagsearch.html')
         html = theater_template.render({
-
+            'navigation': search3.iter(),
             # 'blank': blank.blank,
 
                         # 'events': search3,
@@ -102,6 +102,7 @@ class TheaterSearchHandler(webapp2.RequestHandler):
             # 'event_description': search3.description,
                         ##'tags': specific_event1.musictag
         })
+        self.response.write(html)
 
 
 class MusicSearchHandler(webapp2.RequestHandler):
@@ -167,12 +168,9 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
-<<<<<<< HEAD
     ('/ED', EventHandler),
     ('/theater', TheaterSearchHandler),
     ('/music', MusicSearchHandler),
     ('/dance', DanceSearchHandler),
-=======
     ('/ed', EventHandler),
->>>>>>> f5159975f0c4a93dbf2caeff94b7be7fb6392049
 ],debug=True)

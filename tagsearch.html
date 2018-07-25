@@ -4,10 +4,24 @@
 </head>
 <body>
 
-
-  {% for event in events %}
+  <ul id="navigation">
+  {% for item in navigation %}
+  <li>
+    <p>Title:
+      {{ item.eventname }}
+    </p>
+    <p>
+      {{ item.description }}
+    </p>
+    <p>
+      {{ item.description }}
+    </p>
+  </li>
+    {% endfor %}
+  </ul>
+  <!-- {% for event in events %}
   <p>Title: {{ event.description }}</p>
-    <p>Description: {{ something.something }}</p>
+    <p>Description: {{ something.something }}</p> -->
 
 
 
