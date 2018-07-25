@@ -65,7 +65,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
         if search_iter is not None:
-           event_template = jinja_env.get_template('/sr.html')
+           event_template = jinja_env.get_template('sr.html')
            html = event_template.render({
            'navigation': search_iter
            })
@@ -73,7 +73,9 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
+####the ActiveSearchHandler stopped working for some reason...
 
+##down here, i was trying to create an error message of "your search has not returned any results"
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
