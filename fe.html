@@ -1,25 +1,29 @@
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>
       Find Events
     </title>
+    <link rel="stylesheet" href="/stylesheets/findevents.css">
   </head>
   <body>
-
     <h1>
-      Find Events
+      <div id="header">
+        <p>Find Events</p>
+      </div>
     </h1>
-  <div>
+  <div id="event">
     <h2>
       Event Tags
-      <form action="/theater"><button type="submit">Theater</button></form>
-      <form action="/music"><button type="submit">Music</button></form>
-      <form action="/dance"><button type="submit">Dance</button></form>
+      <div class= "buttons"><form action="/theater"><button type="submit">Theater</button></form></div>
+      <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
+      <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
     </h2>
   </div>
   <br>
     <form action="/active">
-      <div>Search for Events: <input type="text" name="search_input"><input type="submit" value="Search Events"></div>
+      <div id= "searchbar">Search for Events: <input type="text" name="search_input"></div>
+      <div id="searchbutton"> <input type="submit" value="Search Events"></div>
     </form>
   </body>
 </html>
