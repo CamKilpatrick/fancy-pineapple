@@ -76,13 +76,25 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
+class TheaterSearchHandler(webapp2.RequestHandler):
+    def get(self):
+        search3 = SearchByTag("theatertag")
+        search4 = search3.get()
+        self.response.write(search4)
+        theater_template = jinja_env.get_template('/theater.html')
+
+
+class MusicSearchHandler(webapp2.RequestHandler):
+    def get(self):
         search3 = SearchByTag("musictag")
         search4 = search3.get()
         self.response.write(search4)
 
-
-
-
+class DanceSearchHandler(webapp2.RequestHandler):
+    def get(self):
+        search3 = SearchByTag("dancetag")
+        search4 = search3.get()
+        self.response.write(search4)
 
 
 
@@ -121,4 +133,7 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
+    ('/theater', TheaterSearchHandler),
+    ('/music', MusicSearchHandler),
+    ('/dance', DanceSearchHandler),
 ],debug=True)
