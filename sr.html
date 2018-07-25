@@ -1,14 +1,19 @@
 <html>
   <head>
-    <title>
-      Search Results
-    </title>
+    <title>Fancy-Pineapple: ED</title>
   </head>
-  <body>
-
-    <h1>
-      Search Results
-    </h1>
-
-  </body>
+    <body>
+      <ul id="navigation">
+      {% for item in navigation %}
+      <li>
+        <p>
+          {{ item.eventname }}
+        </p>
+        <p>
+          {{ item.description }}
+        </p>
+      </li>
+        {% endfor %}
+      </ul>
+    </body>
 </html>

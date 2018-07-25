@@ -62,26 +62,28 @@ class FindEventsHandler(webapp2.RequestHandler):
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
-        search2 = search.get()
-        if search2 is not None:
-            self.response.write(search2)
-            self.response.write("#################")
-            self.response.write(search2.key)
+        search2 = search.iter()
+        if search_iter is not None:
+           event_template = jinja_env.get_template('sr.html')
+           html = event_template.render({
+           'navigation': search_iter
+           })
+           self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
-        
 
-class TheaterSearchHandler(webapp2.RequestHandler):
-    def get(self):
-        search3 = SearchByTag("theatertag")
-        search4 = search3.get()
-        self.response.write(search4)
-        'events':
-        theater_template = jinja_env.get_template('/tagsearch.html')
 
-        html = theater_template.render({
-            'people': all_people,
-        })
+#class TheaterSearchHandler(webapp2.RequestHandler):
+#    def get(self):
+#        search3 = SearchByTag("theatertag")
+#        search4 = search3.get()
+#        self.response.write(search4)
+#        'events':
+#        theater_template = jinja_env.get_template('/tagsearch.html')
+#
+#        html = theater_template.render({
+#            'people': all_people,
+#        })
 
 
 class MusicSearchHandler(webapp2.RequestHandler):
@@ -128,7 +130,7 @@ class EventHandler(webapp2.RequestHandler):
     def get(self, name):
         specific_event = Event.query().filter(Event.eventnamelower==name)
         specific_event1 = specific_event.get()
-        event_template = jinja_env.get_template('ED.html')
+        event_template = jinja_env.get_template('ed.html')
         html = event_template.render({
         'event_title': specific_event1.eventname,
         'event_description': specific_event1.description,
@@ -147,5 +149,5 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
-    ('/ED', EventHandler),
+    ('/ed', EventHandler),
 ],debug=True)
