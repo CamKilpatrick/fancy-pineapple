@@ -1,19 +1,41 @@
 <html>
   <head>
-    <title>Fancy-Pineapple: ED</title>
+    <title>Search Results</title>
   </head>
     <body>
       <ul id="navigation">
       {% for item in navigation %}
       <li>
-        <p>
+        <p>Event Title:
           {{ item.eventname }}
         </p>
-        <p>
+        <p>Description:
           {{ item.description }}
         </p>
+        <hr>
+        <p>
+          {{ item.start }}
+        </p>
+        <p>
+          {{ item.end }}
+        </p>
+        <p>
+          {{ item.location }}
+        </p>
+        <p>
+          Tags: {{ x }}
+          {% if item.musictag=="on" %}
+            Music
+          {% endif %}
+          {% if (item.theatertag=="on") %}
+            Theater
+          {% endif %}
+          {% if (item.dancetag=="on") %}
+            Dance
+          {% endif %}
+        </p>
       </li>
-        {% endfor %}
+      {% endfor %}
       </ul>
     </body>
 </html>
