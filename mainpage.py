@@ -16,6 +16,20 @@ def SearchByName(name):
     newsearch = Event.query().filter(Event.eventnamelower==name.lower())
     return newsearch
 
+def SearchByTag(tagname):
+    if tagname=="theatertag":
+        newsearch = Event.query().filter(Event.theatertag=="on")
+        return newsearch
+    elif tagname=="musictag":
+        newsearch = Event.query().filter(Event.musictag=="on")
+        return newsearch
+    elif tagname=="dancetag":
+        newsearch = Event.query().filter(Event.dancetag=="on")
+        return newsearch
+    else:
+        pass
+
+
 def DateTimeConverter(timestring):
     s = datetime.datetime.strptime(timestring, "%Y-%m-%dT%H:%M")
     return s
@@ -61,6 +75,11 @@ class ActiveSearchHandler(webapp2.RequestHandler):
 
         else:
             self.response.write("Sorry, your seach turned up empty.")
+
+        search3 = SearchByTag("musictag")
+        search4 = search3.get()
+        self.response.write(search4)
+
 
 
 
