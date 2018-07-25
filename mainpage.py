@@ -64,17 +64,12 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         search = SearchByName(self.request.get("search_input"))
         search2 = search.get()
         if search2 is not None:
-            self.response.write(search2.start)
-            self.response.write(search2.eventname)
-            self.response.write(search2.description)
-            self.response.write(search2.end)
-            self.response.write(search2.location)
-            self.response.write(search2.theatertag)
-            self.response.write(search2.dancetag)
-            self.response.write(search2.musictag)
-
+            self.response.write(search2)
+            self.response.write("#################")
+            self.response.write(search2.key)
         else:
-            self.response.write("Sorry, your search turned up empty.")
+            self.response.write("Sorry, your seach turned up empty.")
+        
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
@@ -101,6 +96,9 @@ class DanceSearchHandler(webapp2.RequestHandler):
         search4 = search3.get()
         self.response.write(search4)
 
+        #search3 = SearchByTag("musictag")
+        #search4 = search3.get()
+        #self.response.write(search4)
 
 
 class EventTemplateHandler(webapp2.RequestHandler):
@@ -112,7 +110,6 @@ class EventTemplateHandler(webapp2.RequestHandler):
 class NewEventHandler(webapp2.RequestHandler):
     def get(self):
         new_event = Event()
-
         myevent_template= jinja_env.get_template('myevent.html')
         html= myevent_template.render()
         self.response.write(html)
@@ -127,6 +124,18 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.location = self.request.get('location')
         new_event.put()
 
+class EventHandler(webapp2.RequestHandler):
+    def get(self, name):
+        specific_event = Event.query().filter(Event.eventnamelower==name)
+        specific_event1 = specific_event.get()
+        event_template = jinja_env.get_template('ED.html')
+        html = event_template.render({
+        'event_title': specific_event1.eventname,
+        'event_description': specific_event1.description,
+        'tags': specific_event1.musictag
+        })
+        self.response.write(html)
+
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/find', FindEventsHandler),
@@ -138,7 +147,5 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
-    ('/theater', TheaterSearchHandler),
-    ('/music', MusicSearchHandler),
-    ('/dance', DanceSearchHandler),
+    ('/ED', EventHandler),
 ],debug=True)
