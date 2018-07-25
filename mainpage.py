@@ -6,8 +6,6 @@ import os
 from google.appengine.ext import ndb
 from login import LoginHandler
 
-
-
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
 )
@@ -15,7 +13,6 @@ jinja_env = jinja2.Environment(
 def SearchByName(name):
     newsearch = Event.query().filter(Event.eventnamelower==name.lower())
     return newsearch
-
 
 def SearchByTag(tagname):
     if tagname=="theatertag":
@@ -29,7 +26,6 @@ def SearchByTag(tagname):
         return newsearch
     else:
         pass
-
 
 def DateTimeConverter(timestring):
     s = datetime.datetime.strptime(timestring, "%Y-%m-%dT%H:%M")
@@ -52,8 +48,6 @@ class MainPageHandler(webapp2.RequestHandler):
         html = main_template.render()
         self.response.write(html)
 
-
-
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
         findevents_template = jinja_env.get_template('fe.html')
@@ -75,8 +69,6 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-
-
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
@@ -88,7 +80,6 @@ class TheaterSearchHandler(webapp2.RequestHandler):
             self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
-
 
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
@@ -102,11 +93,9 @@ class MusicSearchHandler(webapp2.RequestHandler):
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
-
 class DanceSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("dancetag")
-
 
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
