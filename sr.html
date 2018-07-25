@@ -1,17 +1,18 @@
 <html>
   <head>
-    <title>Fancy-Pineapple: ED</title>
+    <title>Search Results</title>
   </head>
     <body>
       <ul id="navigation">
       {% for item in navigation %}
       <li>
-        <p>
+        <p>Event Title:
           {{ item.eventname }}
         </p>
-        <p>
+        <p>Description:
           {{ item.description }}
         </p>
+        <hr>
       </li>
         {% endfor %}
       </ul>

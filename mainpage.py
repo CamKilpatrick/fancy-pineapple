@@ -90,9 +90,9 @@ class ActiveSearchHandler(webapp2.RequestHandler):
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
-        # search4 = search3.iter()
-        # self.response.write(search4)
-        theater_template = jinja_env.get_template('/tagsearch.html')
+
+        theater_template = jinja_env.get_template('/sr.html')
+        ########### getting rid of tagsearch.
         html = theater_template.render({
             'navigation': search3.iter(),
             # 'blank': blank.blank,
@@ -102,20 +102,26 @@ class TheaterSearchHandler(webapp2.RequestHandler):
             # 'event_description': search3.description,
                         ##'tags': specific_event1.musictag
         })
-        self.response.write(html)
+        if search3_iter is not None:
+            self.response.write(html)
+        else:
+            self.response.write("Sorry, your seach turned up empty.")
+
+# search4 = search3.iter()
+# self.response.write(search4)
 
 
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("musictag")
-        search4 = search3.get()
-        self.response.write(search4)
+        # search4 = search3.get()
+        # self.response.write(search4)
 
 class DanceSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("dancetag")
-        search4 = search3.get()
-        self.response.write(search4)
+        # search4 = search3.get()
+        # self.response.write(search4)
 
         #search3 = SearchByTag("musictag")
         #search4 = search3.get()
