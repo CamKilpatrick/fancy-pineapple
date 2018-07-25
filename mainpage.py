@@ -11,8 +11,15 @@ jinja_env = jinja2.Environment(
 )
 
 def SearchByName(name):
-    newsearch = Event.query().filter(Event.eventnamelower==name.lower())
-    return newsearch
+    new_search = Event.query().filter(Event.eventnamelower==name.lower())
+    return new_search
+
+def SearchByID(ID):
+    search_key = Event.key.id()
+    new_search = Event.query().filter(search_key==ID)
+    return new_search
+###########trying to iron this out
+
 
 def SearchByTag(tagname):
     if tagname=="theatertag":
@@ -44,7 +51,7 @@ class Event(ndb.Model):
     end = ndb.DateTimeProperty(required=True)
     start =ndb.DateTimeProperty(required=True)
     location = ndb.StringProperty(required=True)
-    link = ndb.StringProperty(required=False)
+    linknum = ndb.StringProperty(required=False)
 
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
@@ -62,14 +69,14 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
-        #map(MakeLink, search_iter)
         ####### make a unique link for each item in the list so we can get to "see more"
         if search_iter is not None:
-           event_template = jinja_env.get_template('sr.html')
-           html = event_template.render({
-           'navigation': search_iter
+            #map(MakeLink, search_iter)
+            event_template = jinja_env.get_template('sr.html')
+            html = event_template.render({
+            'navigation': search_iter
            })
-           self.response.write(html)
+            self.response.write(html)
         else:
             self.response.write("Sorry, your seach turned up empty.")
 
@@ -127,14 +134,16 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.put()
 
 class EventHandler(webapp2.RequestHandler):
-    def get(self, name):
-        specific_event = Event.query().filter(Event.eventnamelower==name)
-        specific_event1 = specific_event.get()
+    def get(self):
+        search = SearchByID(self.request.get("key"))
+        specific_event = search.get()
+        self.response.write(specific_event)
         event_template = jinja_env.get_template('ed.html')
+        name = specific_event.eventname
         html = event_template.render({
-        'event_title': specific_event1.eventname,
-        'event_description': specific_event1.description,
-        'tags': specific_event1.musictag,
+        'event_title': name,
+        'event_description': specific_event.description,
+        'tags': specific_event.musictag,
         })
         self.response.write(html)
 
@@ -149,7 +158,7 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
-    ('/ED', EventHandler),
+    ('/ed', EventHandler),
     ('/theater', TheaterSearchHandler),
     ('/music', MusicSearchHandler),
     ('/dance', DanceSearchHandler),
