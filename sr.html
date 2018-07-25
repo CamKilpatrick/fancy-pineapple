@@ -12,6 +12,26 @@
         <p>
           {{ item.description }}
         </p>
+        <p>
+          {{ item.start }}
+        </p>
+        <p>
+          {{ item.end }}
+        </p>
+        <p>
+          {{ item.location }}
+        </p>
+        <p>
+          var x = ""
+          {if (item.musictag=="on") {
+            x+="Music "
+          if (item.theatertag=="on"){
+            x+="Theater "
+          if (item.dancetag=="on")
+          }
+          Tags: x
+}
+        </p>
       </li>
         {% endfor %}
       </ul>

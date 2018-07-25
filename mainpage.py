@@ -63,7 +63,7 @@ class FindEventsHandler(webapp2.RequestHandler):
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
-        search2 = search.iter()
+        search_iter = search.iter()
         if search_iter is not None:
            event_template = jinja_env.get_template('sr.html')
            html = event_template.render({
@@ -167,12 +167,9 @@ app = webapp2.WSGIApplication([
     ('/login', LoginHandler),
     ('/create', EventTemplateHandler),
     ('/active', ActiveSearchHandler),
-<<<<<<< HEAD
     ('/ED', EventHandler),
     ('/theater', TheaterSearchHandler),
     ('/music', MusicSearchHandler),
     ('/dance', DanceSearchHandler),
-=======
     ('/ed', EventHandler),
->>>>>>> f5159975f0c4a93dbf2caeff94b7be7fb6392049
 ],debug=True)
