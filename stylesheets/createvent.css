@@ -20,3 +20,8 @@ body{
   font-family: fantasy;
   font-size: 80px;
 }
+
+input[type=text]{
+
+}
+/* increase size of descroption box */
