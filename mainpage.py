@@ -81,8 +81,12 @@ class TheaterSearchHandler(webapp2.RequestHandler):
         search3 = SearchByTag("theatertag")
         search4 = search3.get()
         self.response.write(search4)
-        events
+        'events':
         theater_template = jinja_env.get_template('/tagsearch.html')
+
+        html = theater_template.render({
+            'people': all_people,
+        })
 
 
 class MusicSearchHandler(webapp2.RequestHandler):
