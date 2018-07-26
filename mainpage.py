@@ -164,9 +164,7 @@ class EventHandler(webapp2.RequestHandler):
         event1 = SearchByID(self.request.get("key"))
         event_template = jinja_env.get_template('ed.html')
         html = event_template.render({
-        'event_title': event1.eventname,
-        'event_description': event1.description,
-        'tags': event1.musictag,
+        'item':event1
         })
         self.response.write(html)
 

@@ -4,15 +4,27 @@
   </head>
   <body>
     <p>
-      {{ event_title }}
+      {{ item.eventname }}
     </p>
     <p>
-      <img src="static/catimg.jpeg">
+      {{ item.start.month }}/{{item.start.day}}/{{item.start.year}} at {{ item.start_time }} to {{ item.end.month }}/{{item.end.day}}/{{item.end.year}} at {{ item.end_time }}
     </p>
     <p>
-      {{ event_description }}
+      Location:
+      {{item.location}}
+    <p>Description:
+      {{ item.description }}
     </p>
     <p>
-      Tags: {{ tags }}
+      Tags:
+        {% if item.musictag=="on" %}
+          <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
+        {% endif %}
+        {% if (item.theatertag=="on") %}
+          <div class= "buttons"><form action="/theater"><button type="submit">Theater</button></form></div>
+        {% endif %}
+        {% if (item.dancetag=="on") %}
+          <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
+        {% endif %}
   </body>
 </html>
