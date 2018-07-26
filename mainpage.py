@@ -27,7 +27,6 @@ def SearchByID(ID):
     pass
 ###########trying to iron this out
 
-
 def SearchByTag(tagname):
     if tagname=="theatertag":
         newsearch = Event.query().filter(Event.theatertag=="on")
@@ -40,6 +39,7 @@ def SearchByTag(tagname):
         return newsearch
     else:
         pass
+
 
 def MakeLink(event):
     event.link = "/" + str(event.key.id)
@@ -70,11 +70,11 @@ class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
         # search_iter = display_events.iter()
         findevents_template = jinja_env.get_template('fe.html')
-        display_events = Event.query().fetch()
-        self.response.write(display_events)
-
+        # display_events = SearchEvent.fetch()
+        # search_iter = display_events.iter()
+        # self.response.write(display_events)
         html = findevents_template.render({
-        'listevents': display_events,
+        # 'listevents': search_iter,
         })
         self.response.write(html)
         # displayquery = Event.query().order(Event.start)
