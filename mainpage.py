@@ -84,7 +84,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
             #map(MakeLink, search_iter)
             event_template = jinja_env.get_template('sr.html')
             html = event_template.render({
-            'navigation': search_iter
+            'navigation': search_iter,
            })
             self.response.write(html)
         else:

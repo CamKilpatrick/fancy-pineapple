@@ -19,11 +19,11 @@
         <p>Description:
           {{ item.description }}
         </p>
-        <p>Start Date and Time:
-          {{ item.start }}
+        <p>Starts:
+          {{ item.start.month }}/{{item.start.day}}/{{item.start.year}} at {{ item.start.hour }}:{{ item.start.minute }}
         </p>
-        <p>End Date and Time:
-          {{ item.end }}
+        <p>Ends:
+          {{ item.end.month }}/{{item.end.day}}/{{item.end.year}} at {{ item.end.hour }}:{{ item.end.minute }}
         </p>
         <p>Location:
           {{ item.location }}
