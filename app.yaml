@@ -20,17 +20,9 @@ handlers:
 - url: /stylesheets
   static_dir: stylesheets
 
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
-
-- url: /my-images
-  static_dir: my-images
-
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*
   script: mainpage.app
-
 
 libraries:
 - name: webapp2
