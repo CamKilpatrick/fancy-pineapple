@@ -105,6 +105,7 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         else:
             event_template = jinja_env.get_template('nr.html')
             html = event_template.render()
+            self.response.write(html)
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
