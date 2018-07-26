@@ -14,6 +14,17 @@ def SearchByName(name):
     new_search = Event.query().filter(Event.eventnamelower==name.lower())
     return new_search
 
+def StandardTime(MiliTime):
+    time = int(MiliTime)
+    if time >= 1300:
+        time = time - 1200
+        time = str(time)
+        time = time[0,2]+':'+time[2,4]+"PM"
+    else:
+        time = str(time)
+        time = time[0,2]+':'+time[2,4]+"AM"
+
+
 def SearchByID(ID):
     retrieve_all = Event.query().iter()
     print retrieve_all
@@ -24,7 +35,6 @@ def SearchByID(ID):
             return item
     pass
 ###########trying to iron this out
-
 
 def SearchByTag(tagname):
     if tagname=="theatertag":
@@ -38,6 +48,7 @@ def SearchByTag(tagname):
         return newsearch
     else:
         pass
+
 
 def MakeLink(event):
     event.link = "/" + str(event.key.id)
@@ -57,6 +68,8 @@ class Event(ndb.Model):
     start =ndb.DateTimeProperty(required=True)
     location = ndb.StringProperty(required=True)
     linknum = ndb.StringProperty(required=False)
+    start_time = ndb.StringProperty(required=False)
+    end_time = ndb.StringProperty(required=False)
 
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
@@ -67,7 +80,12 @@ class MainPageHandler(webapp2.RequestHandler):
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
         findevents_template = jinja_env.get_template('fe.html')
-        html = findevents_template.render()
+        # display_events = SearchEvent.fetch()
+        # search_iter = display_events.iter()
+        # self.response.write(display_events)
+        html = findevents_template.render({
+        # 'listevents': search_iter,
+        })
         self.response.write(html)
         # displayquery = Event.query().order(Event.start)
         # return displayquery
@@ -142,6 +160,8 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.start = DateTimeConverter(self.request.get('start'))
         new_event.end = DateTimeConverter(self.request.get('end'))
         new_event.location = self.request.get('location')
+        new_event.start_time = new_event.start.strftime('%I:%M %p')
+        new_event.end_time = new_event.end.strftime('%I:%M %p')
         new_event.put()
 
 class EventHandler(webapp2.RequestHandler):
