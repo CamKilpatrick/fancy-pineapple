@@ -19,17 +19,17 @@
         <p>Description:
           {{ item.description }}
         </p>
-        <p>Start Date and Time:
-          {{ item.start }}
+        <p>Starts:
+          {{ item.start.month }}/{{item.start.day}}/{{item.start.year}} at {{ item.start_time }}
         </p>
-        <p>End Date and Time:
-          {{ item.end }}
+        <p>Ends:
+          {{ item.end.month }}/{{item.end.day}}/{{item.end.year}} at {{ item.end_time }}
         </p>
         <p>Location:
           {{ item.location }}
         </p>
         <p>
-          Tags: {{ x }}
+          Tags:
           {% if item.musictag=="on" %}
             <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
           {% endif %}
@@ -40,9 +40,8 @@
             <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
           {% endif %}
         </p>
-        <a id="seemore" href="/ed?key={{item.key.id()}}">See More</a>
+        <a href="/ed?key={{item.key.id()}}">See More</a>
         <hr>
-        <hr id="line">
       </li>
       {% endfor %}
       </ul>
