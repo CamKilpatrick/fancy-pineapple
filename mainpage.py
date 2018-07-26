@@ -15,9 +15,16 @@ def SearchByName(name):
     return new_search
 
 def SearchByID(ID):
-    search_key = Event.key.id()
-    new_search = Event.query().filter(search_key==ID)
-    return new_search
+    retrieve_all = Event.query().iter()
+    print retrieve_all
+    print ID
+    print "#############################################"
+    for item in retrieve_all:
+        print item.key.id()
+        print "#############################################"
+        if str(item.key.id()) == str(ID):
+            return item
+    pass
 ###########trying to iron this out
 
 
@@ -141,15 +148,12 @@ class NewEventHandler(webapp2.RequestHandler):
 
 class EventHandler(webapp2.RequestHandler):
     def get(self):
-        search = SearchByID(self.request.get("key"))
-        specific_event = search.get()
-        self.response.write(specific_event)
+        event1 = SearchByID(self.request.get("key"))
         event_template = jinja_env.get_template('ed.html')
-        name = specific_event.eventname
         html = event_template.render({
-        'event_title': name,
-        'event_description': specific_event.description,
-        'tags': specific_event.musictag,
+        'event_title': event1.eventname,
+        'event_description': event1.description,
+        'tags': event1.musictag,
         })
         self.response.write(html)
 
