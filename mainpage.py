@@ -4,7 +4,6 @@ import datetime
 import jinja2
 import os
 from google.appengine.ext import ndb
-from login import LoginHandler
 
 jinja_env = jinja2.Environment(
     loader= jinja2.FileSystemLoader(os.path.dirname(__file__)),
