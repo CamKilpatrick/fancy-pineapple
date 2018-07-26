@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/ed.css">
   </head>
   <body>
+    <div>
     <p>
       {{ item.eventname }}
     </p>
@@ -28,5 +29,6 @@
         {% if (item.dancetag=="on") %}
           <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
         {% endif %}
+      </div>
   </body>
 </html>
