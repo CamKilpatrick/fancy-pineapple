@@ -29,7 +29,7 @@
           {{ item.location }}
         </p>
         <p>
-          Tags: {{ x }}
+          Tags:
           {% if item.musictag=="on" %}
             <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
           {% endif %}
@@ -40,8 +40,8 @@
             <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
           {% endif %}
         </p>
-        <a id="seemore" href="/event?id="+item.link>See More</a>
-        <hr id="line">
+        <a href="/ed?key={{item.key.id()}}">See More</a>
+        <hr>
       </li>
       {% endfor %}
       </ul>
