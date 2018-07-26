@@ -12,3 +12,11 @@ body{
 .buttons{
   display:inline-block;
 }
+
+#back{
+  color:#663366;
+  background-color: #FFF9C9;
+  font-family: fantasy;
+  font-size: 25px;
+  text-align: right;
+}
