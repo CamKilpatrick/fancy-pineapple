@@ -62,6 +62,8 @@ class Event(ndb.Model):
     description = ndb.StringProperty(required=True)
     musictag = ndb.StringProperty(required=True)
     dancetag = ndb.StringProperty(required=True)
+    foodtag = ndb.StringProperty(required=True)
+    fitnesstag = ndb.StringProperty(required=True)
     theatertag = ndb.StringProperty(required=True)
     end = ndb.DateTimeProperty(required=True)
     start =ndb.DateTimeProperty(required=True)
@@ -116,6 +118,25 @@ class TheaterSearchHandler(webapp2.RequestHandler):
         })
         self.response.write(html)
 
+class FoodSearchHandler(webapp2.RequestHandler):
+    def get(self):
+        search3 = SearchByTag("foodtag")
+        tagsearch = search3.iter()
+        food_template = jinja_env.get_template('sr.html')
+        html = food_template.render({
+        'navigation': tagsearch,
+        })
+        self.response.write(html)
+
+class FitnessSearchHandler(webapp2.RequestHandler):
+    def get(self):
+        search3 = SearchByTag("fitnesstag")
+        tagsearch = search3.iter()
+        fitness_template = jinja_env.get_template('sr.html')
+        html = fitness_template.render({
+        'navigation': tagsearch,
+        })
+        self.response.write(html)
 
 class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
@@ -156,6 +177,8 @@ class NewEventHandler(webapp2.RequestHandler):
         new_event.musictag = self.request.get('musictag')
         new_event.theatertag = self.request.get('theatertag')
         new_event.dancetag = self.request.get('dancetag')
+        new_event.fitnesstag = self.request.get('fitnesstag')
+        new_event.foodtag = self.request.get('foodtag')
         new_event.start = DateTimeConverter(self.request.get('start'))
         new_event.end = DateTimeConverter(self.request.get('end'))
         new_event.location = self.request.get('location')
@@ -183,4 +206,7 @@ app = webapp2.WSGIApplication([
     ('/music', MusicSearchHandler),
     ('/dance', DanceSearchHandler),
     ('/ed', EventHandler),
+    ('/food', FoodSearchHandler),
+    ('/fitness', FitnessSearchHandler),
+
 ],debug=True)
