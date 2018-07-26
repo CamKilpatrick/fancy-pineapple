@@ -1,8 +1,11 @@
 <html>
   <head>
-    <title>Fancy-Pineapple: ED</title>
+    <meta charset="UTF-8">
+    <title>Event Description</title>
+    <link rel="stylesheet" href="/stylesheets/ed.css">
   </head>
   <body>
+    <div style="position:relative;top:120px;">
     <p>
       {{ item.eventname }}
     </p>
@@ -10,13 +13,14 @@
       {{ item.start.month }}/{{item.start.day}}/{{item.start.year}} at {{ item.start_time }} to {{ item.end.month }}/{{item.end.day}}/{{item.end.year}} at {{ item.end_time }}
     </p>
     <p>
-      Location:
+      <div class="label">Location: </div>
       {{item.location}}
-    <p>Description:
+    <p>
+      <div class= "label">Description:</div>
       {{ item.description }}
     </p>
     <p>
-      Tags:
+      <div class="label">Tags:</div>
         {% if item.musictag=="on" %}
           <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
         {% endif %}
@@ -26,6 +30,7 @@
         {% if (item.dancetag=="on") %}
           <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
         {% endif %}
+      </div>
         {% if (item.foodtag=="on") %}
           <div class= "buttons"><form action="/food"><button type="submit">Food</button></form></div>
         {% endif %}
