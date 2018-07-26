@@ -8,3 +8,7 @@ body{
 .label{
   color:#FFA18F;
 }
+
+.buttons{
+  display:inline-block;
+}
