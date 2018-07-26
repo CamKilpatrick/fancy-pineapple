@@ -54,13 +54,15 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
-        display_events = Event.query().fetch()
+        # search_iter = display_events.iter()
         findevents_template = jinja_env.get_template('fe.html')
+        display_events = Event.query().fetch()
+        self.response.write(display_events)
+
         html = findevents_template.render({
         'listevents': display_events,
         })
         self.response.write(html)
-        self.response.write(display_events)
         # displayquery = Event.query().order(Event.start)
         # return displayquery
         #I was trying to make a query that will show all the events on one page on the find events page

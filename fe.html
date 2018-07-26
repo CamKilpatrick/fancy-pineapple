@@ -26,12 +26,16 @@
       <div id="searchbutton"> <input type="submit" value="Search Events"></div>
     </form>
   <br>
-<!-- I was trying to make a query that will show all the events on one page on the find events page-->
-  <!-- <ul id="navigation">
-  {% for item in navigation %}
+  <div id="back">
+    <a href="/"> Back to Main</a>
+  </div>
+  <ul id="display_events">
+  {% for item in display_events %}
   <li>
-    <p>Event Title:
+    <div id="header">
+      <p>Event Title:
       {{ item.eventname }}
+    </div>
     </p>
     <p>Description:
       {{ item.description }}
@@ -48,19 +52,19 @@
     <p>
       Tags: {{ x }}
       {% if item.musictag=="on" %}
-        Music
+        <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
       {% endif %}
       {% if (item.theatertag=="on") %}
-        Theater
+        <div class= "buttons"><form action="/theater"><button type="submit">Theater</button></form></div>
       {% endif %}
       {% if (item.dancetag=="on") %}
-        Dance
+        <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
       {% endif %}
     </p>
-    <a href="/event?id="+item.link>See More</a>
-    <hr>
+    <a id="seemore" href="/event?id="+item.link>See More</a>
+    <hr id="line">
   </li>
   {% endfor %}
-  </ul> -->
+  </ul>
   </body>
 </html>
