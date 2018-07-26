@@ -68,14 +68,8 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class FindEventsHandler(webapp2.RequestHandler):
     def get(self):
-        # search_iter = display_events.iter()
         findevents_template = jinja_env.get_template('fe.html')
-        display_events = Event.query().fetch()
-        self.response.write(display_events)
-
-        html = findevents_template.render({
-        'listevents': display_events,
-        })
+        html = findevents_template.render()
         self.response.write(html)
         # displayquery = Event.query().order(Event.start)
         # return displayquery
@@ -101,12 +95,14 @@ class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("theatertag")
         tagsearch = search3.iter()
-        theater_template = jinja_env.get_template('sr.html')
-        html = theater_template.render({
-        'navigation': tagsearch,
-        })
-        self.response.write(html)
-
+        if tagsearch is not None:
+            theater_template = jinja_env.get_template('sr.html')
+            html = theater_template.render({
+            'navigation': tagsearch,
+            })
+            self.response.write(html)
+        else:
+            self.response.write("Sorry, your seach turned up empty.")
 
             ######need to finishe th eerror message for returning an empty search for theater, music, and dance
 
@@ -114,22 +110,18 @@ class MusicSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("musictag")
         tagsearch = search3.iter()
-        music_template = jinja_env.get_template('sr.html')
-        html = music_template.render({
-        'navigation': tagsearch,
-        })
-        self.response.write(html)
-
+        if tagsearch is not None:
+            music_template = jinja_env.get_template('sr.html')
+            html = music_template.render({
+            'navigation': tagsearch,
+            })
+            self.response.write(html)
+        else:
+            self.response.write("Sorry, your seach turned up empty.")
 
 class DanceSearchHandler(webapp2.RequestHandler):
     def get(self):
         search3 = SearchByTag("dancetag")
-        tagsearch = search3.iter()
-        dance_template = jinja_env.get_template('sr.html')
-        html = dance_template.render({
-        'navigation': tagsearch,
-        })
-        self.response.write(html)
 
 class EventTemplateHandler(webapp2.RequestHandler):
     def get(self):
