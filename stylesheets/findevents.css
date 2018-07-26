@@ -36,5 +36,8 @@ body{
 input[type=text]{
   width: 20%;
   border: 2px solid #FFA18F;
+}
 
+input[type="text"]{
+    font-size:20px;
 }
