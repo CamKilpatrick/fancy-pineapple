@@ -33,6 +33,12 @@
           {% if (item.dancetag=="on") %}
             <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
           {% endif %}
+          {% if (item.foodtag=="on") %}
+            <div class= "buttons"><form action="/food"><button type="submit">Food</button></form></div>
+          {% endif %}
+          {% if (item.fitnesstag=="on") %}
+            <div class= "buttons"><form action="/fitness"><button type="submit">Fitness</button></form></div>
+          {% endif %}
         </p>
         <a href="/ed?key={{item.key.id()}}">See More</a>
         <hr>
