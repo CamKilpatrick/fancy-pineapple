@@ -3,6 +3,7 @@ body{
   background-color: #FFF9C9;
   font-family: fantasy;
   font-size: 20px;
+  text-align: center;
 }
 
 #line{
@@ -25,4 +26,13 @@ body{
 #back{
   text-align: right;
   color: #663366;
+}
+
+ul{ list-style-type: none; }
+
+.buttons {
+  color: #900;
+  font-weight: bold;
+  font-size: 150%;
+  text-transform: uppercase;
 }
