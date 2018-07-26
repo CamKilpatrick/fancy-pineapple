@@ -12,20 +12,14 @@
       {% for item in navigation %}
       <li>
         <div id="header">
-          <p>Event Title:
+          <p>
           {{ item.eventname }}
         </div>
         </p>
-        <p>Description:
-          {{ item.description }}
-        </p>
-        <p>Starts:
+        <p>
           {{ item.start.month }}/{{item.start.day}}/{{item.start.year}} at {{ item.start_time }}
         </p>
-        <p>Ends:
-          {{ item.end.month }}/{{item.end.day}}/{{item.end.year}} at {{ item.end_time }}
-        </p>
-        <p>Location:
+        <p>
           {{ item.location }}
         </p>
         <p>
