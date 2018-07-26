@@ -7,7 +7,7 @@
 #searchbar{
   color:#FFA18F;
   font-family: fantasy;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 #searchbutton{
@@ -22,22 +22,29 @@
   font-size: 20px;
 }
 
-.buttons{
+#back{
+  color:#663366;
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+/* .buttons{
   color: #663366;
   font-family: fantasy;
   font-size: 30px;
-}
+} */
 
 body{
   background-color: #FFF9C9;
   text-align: center;
-}
+  background-image: url("/stylesheets/searchicon.png");
+  background-repeat: no-repeat, repeat;
+  background-size: auto;
 
-input[type=text]{
-  width: 20%;
-  border: 2px solid #FFA18F;
 }
 
 input[type="text"]{
     font-size:20px;
+    width: 20%;
+    border: 2px solid #FFA18F
 }

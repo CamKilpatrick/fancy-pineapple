@@ -15,7 +15,7 @@
   <div id="event">
     <h2>
       Search by Event Tag:
-      <div class= "buttons"><form action="/theater"><button type="submit">Theater</button></form></div>
+      <div class= "buttons"><form action="/theater"><button type="submit">Theater/Film</button></form></div>
       <div class= "buttons"><form action="/music"><button type="submit">Music</button></form></div>
       <div class= "buttons"><form action="/dance"><button type="submit">Dance</button></form></div>
     </h2>
@@ -26,9 +26,6 @@
       <div id="searchbutton"> <input type="submit" value="Search Events"></div>
     </form>
   <br>
-  <div id="back">
-    <a href="/"> Back to Main</a>
-  </div>
   <ul id="display_events">
   {% for item in display_events %}
   <li>
@@ -66,5 +63,8 @@
   </li>
   {% endfor %}
   </ul>
+  <div id="back">
+    <a href="/"> Back to Main</a>
+  </div>
   </body>
 </html>
