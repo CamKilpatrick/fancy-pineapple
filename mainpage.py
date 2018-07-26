@@ -96,17 +96,15 @@ class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
-        ####### make a unique link for each item in the list so we can get to "see more"
-        if search_iter is not None:
-            #map(MakeLink, search_iter)
+        if search.get() is not None:
             event_template = jinja_env.get_template('sr.html')
             html = event_template.render({
             'navigation': search_iter,
            })
             self.response.write(html)
         else:
-           self.response.write("Sorry, your seach turned up empty.")
-#this activesearch hanlder is not workign for some reason
+            event_template = jinja_env.get_template('nr.html')
+            html = event_template.render()
 
 class TheaterSearchHandler(webapp2.RequestHandler):
     def get(self):
