@@ -18,10 +18,8 @@ def SearchByID(ID):
     retrieve_all = Event.query().iter()
     print retrieve_all
     print ID
-    print "#############################################"
     for item in retrieve_all:
         print item.key.id()
-        print "#############################################"
         if str(item.key.id()) == str(ID):
             return item
     pass
