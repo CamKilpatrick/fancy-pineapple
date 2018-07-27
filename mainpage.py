@@ -45,6 +45,12 @@ def SearchByTag(tagname):
     elif tagname=="dancetag":
         newsearch = Event.query().filter(Event.dancetag=="on")
         return newsearch
+    elif tagname=="foodtag":
+        newsearch = Event.query().filter(Event.foodtag=="on")
+        return newsearch
+    elif tagname=="fitnesstag":
+        newsearch = Event.query().filter(Event.fitnesstag=="on")
+        return newsearch
     else:
         pass
 
