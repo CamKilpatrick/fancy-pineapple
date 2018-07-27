@@ -10,7 +10,7 @@ jinja_env = jinja2.Environment(
 )
 
 def SearchByName(name):
-    new_search = Event.query().filter(Event.eventnamelower==name.lower())
+    new_search = Event.query().filter(name.lower()==Event.eventnamelower)
     return new_search
 
 def StandardTime(MiliTime):
@@ -64,7 +64,7 @@ def DateTimeConverter(timestring):
 
 class Event(ndb.Model):
     eventname = ndb.StringProperty(required=True)
-    eventnamelower = ndb.StringProperty(required=True)
+    eventnamelower = ndb.StringProperty("eventnamelower", required=True)
     description = ndb.StringProperty(required=True)
     musictag = ndb.StringProperty(required=True)
     dancetag = ndb.StringProperty(required=True)
@@ -94,18 +94,21 @@ class FindEventsHandler(webapp2.RequestHandler):
         # 'listevents': search_iter,
         })
         self.response.write(html)
-        # displayquery = Event.query().order(Event.start)
-        # return displayquery
-        #I was trying to make a query that will show all the events on one page on the find events page
-
 class ActiveSearchHandler(webapp2.RequestHandler):
     def get(self):
+        cool_search = Event.query().iter()
+        search_list = []
+        for item in cool_search:
+            if self.request.get("search_input") in item.eventnamelower:
+                search_list.append(item)
         search = SearchByName(self.request.get("search_input"))
         search_iter = search.iter()
-        if search.get() is not None:
+        print "##################"
+        print search_list
+        if cool_search is not None:
             event_template = jinja_env.get_template('sr.html')
             html = event_template.render({
-            'navigation': search_iter,
+            'navigation': search_list,
            })
             self.response.write(html)
         else:
