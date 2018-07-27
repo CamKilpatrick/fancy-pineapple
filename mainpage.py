@@ -105,7 +105,9 @@ class ActiveSearchHandler(webapp2.RequestHandler):
         search_iter = search.iter()
         print "##################"
         print search_list
-        if cool_search is not None:
+        if len(search_list) is not 0:
+            print len(search_list)
+            print "##########"
             event_template = jinja_env.get_template('sr.html')
             html = event_template.render({
             'navigation': search_list,
