@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="/stylesheets/mainpage.css">
     <div id="back">
     <a href="/">Back to Main</a>
+    <br> <a href="/find"> Back to Search</a>
   </div>
   </head>
   <body>
     <div style="position:relative;top:50px;">
     <p>
+      <div id="title">
       {{ item.eventname }}
+      </div>
     </p>
     <p>
       {{ item.start.month }}/{{item.start.day}}/{{item.start.year}} at {{ item.start_time }} to {{ item.end.month }}/{{item.end.day}}/{{item.end.year}} at {{ item.end_time }}

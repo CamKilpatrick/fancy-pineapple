@@ -40,3 +40,10 @@ textarea{
   font-size:20px;
   font-family:fantasy;
 }
+
+#back{
+  color:#663366;
+  font-size: 20px;
+  font-family: fantasy;
+  text-align: right;
+}
